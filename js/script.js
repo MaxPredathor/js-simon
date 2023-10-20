@@ -4,8 +4,9 @@
     const input = document.querySelector('input');
     const alert = document.getElementById('alert');
     const btnInput = document.getElementById('button2');
+    const result = document.getElementById('result');
+    const numResult = document.getElementById('numResult');
     let randomArray = [];
-    let inputArray = [];
 
 
     btn.addEventListener('click', function(){
@@ -16,19 +17,38 @@
     });
 
     btnInput.addEventListener('click', function(){
-        let inputValue = input.value;
-        inputArray.push(inputValue);
-        console.log(inputArray);
-
+        let textInput = input.value;
+        let split = textInput.split(' ');
+        let numbers = split.map(Number);
+        console.log(numbers);
         let i = 0;
-        while(i < 5){
-            inputArray[0].split(" ");
-            console.log(inputArray);
-            inputArray.map(Number);
-            console.log(inputArray);
+        let amount = 0;
+        let winner = [];
+        let loser = [];
 
+        while(i < 5){
+            if(randomArray.includes(numbers[0])){
+                let numWin = numbers.shift();
+                winner.push(numWin);
+                amount++;
+            }else{
+                let numLose = numbers.shift();
+                loser.push(numLose);
+            }
+            
         i++
-        }           
+        }   
+        console.log(amount);
+        console.log(winner);
+        console.log(loser);  
+        result.style.color = 'white';
+        result.style.fontWeight = 'bold';
+        result.style.fontSize = '25px';
+        numResult.style.color = 'white';
+        numResult.style.fontWeight = 'bold';
+        numResult.style.fontSize = '25px';
+        numResult.innerText = winner;
+        result.innerText = 'Hai inserito ' + amount + ' numeri giusti.'
     });
 
     function getRndInteger(min, max) {
