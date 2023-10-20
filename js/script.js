@@ -8,14 +8,15 @@
     const numResult = document.getElementById('numResult');
     let randomArray = [];
 
-
+    // Button wich generates 5 random number so that the user can remember them
     btn.addEventListener('click', function(){
 
         displayNoneReset();
         randomNumbersArray();
         setTimeout(addDisplayNone, 3000);
     });
-
+    // Second Button wich allow the user to insert his 5 input and then check if 
+    // the user's input are correct and display them if so.
     btnInput.addEventListener('click', function(){
         let textInput = input.value;
         let split = textInput.split(' ');
@@ -50,11 +51,8 @@
         numResult.innerText = winner;
         result.innerText = 'Hai inserito ' + amount + ' numeri giusti.'
     });
-
-    function getRndInteger(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) ) + min;
-    }
-
+    
+    // function that generates the 5 random numbers and push them into an array
     function randomNumbersArray(){
         let num;
         let i = 0;
@@ -68,6 +66,11 @@
         alert.style.fontSize = '25px';
         alert.innerText = randomArray;
         console.log(randomArray);
+    }
+
+    // Utilities
+    function getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) ) + min;
     }
     
     function addDisplayNone(){
