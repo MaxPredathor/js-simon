@@ -18,6 +18,7 @@
         displayNoneReset();
         randomNumbersArray();
         setTimeout(addDisplayNone, 3000);
+        
     });
     // Second Button wich allow the user to insert his 5 input and then check if 
     // the user's input are correct and display them if so.
@@ -99,12 +100,15 @@
         let i = 0;
         while(i < 5){
             num = getRndInteger(1, 100);
-            randomArray.push(num);
-        i++
+            if(randomArray.includes(num)){
+                console.log('prevented');
+
+            }else{
+                randomArray.push(num);
+                i++;
+            }
         }
-        alert.style.color = 'white';
-        alert.style.fontWeight = 'bold';
-        alert.style.fontSize = '25px';
+        alert.classList.add('fw-bold', 'text-light', 'fs-3');
         alert.innerText = randomArray;
         console.log(randomArray);
     }
