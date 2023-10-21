@@ -6,6 +6,10 @@
     const btnInput = document.getElementById('button2');
     const result = document.getElementById('result');
     const numResult = document.getElementById('numResult');
+    const numResult2 = document.getElementById('numResult2');
+    const numResult3 = document.getElementById('numResult3');
+    const numResult4 = document.getElementById('numResult4');
+    const numResult5 = document.getElementById('numResult5');
     let randomArray = [];
 
     // Button wich generates 5 random number so that the user can remember them
@@ -21,11 +25,15 @@
         let textInput = input.value;
         let split = textInput.split(' ');
         let numbers = split.map(Number);
-        console.log(numbers);
         let i = 0;
         let amount = 0;
         let winner = [];
         let loser = [];
+        let numPop;
+        let numPop2;
+        let numPop3;
+        let numPop4;
+        let numPop5;
 
         while(i < 5){
             if(randomArray.includes(numbers[0])){
@@ -35,20 +43,53 @@
             }else{
                 let numLose = numbers.shift();
                 loser.push(numLose);
-            }
-            
+            }     
         i++
-        }   
-        console.log(amount);
-        console.log(winner);
-        console.log(loser);  
-        result.style.color = 'white';
-        result.style.fontWeight = 'bold';
-        result.style.fontSize = '25px';
-        numResult.style.color = 'white';
-        numResult.style.fontWeight = 'bold';
-        numResult.style.fontSize = '25px';
-        numResult.innerText = winner;
+        }
+        
+        if(amount === 5){          
+            numPop = winner.pop([0]);
+            numPop2 = winner.pop([0]);
+            numPop3 = winner.pop([0]);
+            numPop4 = winner.pop([0]);
+            numPop5 = winner.pop([0]);
+            numResult.innerText = numPop;
+            numResult2.innerText = numPop2;
+            numResult3.innerText = numPop3;
+            numResult4.innerText = numPop4;
+            numResult5.innerText = numPop5;
+        }else if(amount === 4){
+            numPop = winner.pop([0]);
+            numPop2 = winner.pop([1]);
+            numPop3 = winner.pop([2]);
+            numPop4 = winner.pop([3]);
+            numResult.innerText = numPop;
+            numResult2.innerText = numPop2;
+            numResult3.innerText = numPop3;
+            numResult4.innerText = numPop4;
+        }else if(amount === 3){
+            numPop = winner.pop([0]);
+            numPop2 = winner.pop([1]);
+            numPop3 = winner.pop([2]);
+            numResult.innerText = numPop;
+            numResult2.innerText = numPop2;
+            numResult3.innerText = numPop3;
+        }else if(amount === 2){
+            numPop = winner.pop([0]);
+            numPop2 = winner.pop([1]);
+            numResult.innerText = numPop;
+            numResult2.innerText = numPop2;
+        }else{
+            numPop = winner.pop([0]);
+            numResult.innerText = numPop;
+        }
+          
+        result.classList.add('fw-bold', 'text-light', 'fs-3');
+        numResult.classList.add('fw-bold', 'text-light', 'fs-3', 'px-3');
+        numResult2.classList.add('fw-bold', 'text-light', 'fs-3', 'px-3');
+        numResult3.classList.add('fw-bold', 'text-light', 'fs-3', 'px-3');
+        numResult4.classList.add('fw-bold', 'text-light', 'fs-3', 'px-3');
+        numResult5.classList.add('fw-bold', 'text-light', 'fs-3', 'px-3');
         result.innerText = 'Hai inserito ' + amount + ' numeri giusti.'
     });
     
