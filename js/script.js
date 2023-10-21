@@ -13,16 +13,17 @@
     let randomArray = [];
 
     // Button wich generates 5 random number so that the user can remember them
-    btn.addEventListener('click', function(){
+    btn.addEventListener('click', function generateNumbers(){
 
         displayNoneReset();
         randomNumbersArray();
         setTimeout(addDisplayNone, 3000);
-        
+        btn.removeEventListener('click', generateNumbers)
+
     });
     // Second Button wich allow the user to insert his 5 input and then check if 
     // the user's input are correct and display them if so.
-    btnInput.addEventListener('click', function(){
+    btnInput.addEventListener('click', function userInput(){
         let textInput = input.value;
         let split = textInput.split(' ');
         let numbers = split.map(Number);
@@ -92,9 +93,10 @@
         numResult4.classList.add('fw-bold', 'text-light', 'fs-3', 'px-3');
         numResult5.classList.add('fw-bold', 'text-light', 'fs-3', 'px-3');
         result.innerText = 'Hai inserito ' + amount + ' numeri giusti.'
+        btnInput.removeEventListener('click', userInput);
     });
     
-    // function that generates the 5 random numbers and push them into an array
+    // function that generates 5 unique random numbers and push them into an array
     function randomNumbersArray(){
         let num;
         let i = 0;
