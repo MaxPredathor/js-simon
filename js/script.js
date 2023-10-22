@@ -27,7 +27,6 @@
         let textInput = input.value;
         let split = textInput.split(' ');
         let numbers = split.map(Number);
-        let i = 0;
         let amount = 0;
         let winner = [];
         let loser = [];
@@ -36,6 +35,7 @@
         let numPop3;
         let numPop4;
         let numPop5;
+        let i = 0;
 
         while(i < 5){
             if(randomArray.includes(numbers[0])){
@@ -50,39 +50,39 @@
         }
         
         if(amount === 5){          
-            numPop = winner.pop([0]);
-            numPop2 = winner.pop([0]);
-            numPop3 = winner.pop([0]);
-            numPop4 = winner.pop([0]);
-            numPop5 = winner.pop([0]);
+            numPop = winner.shift();
+            numPop2 = winner.shift();
+            numPop3 = winner.shift();
+            numPop4 = winner.shift();
+            numPop5 = winner.shift();
             numResult.innerText = numPop;
             numResult2.innerText = numPop2;
             numResult3.innerText = numPop3;
             numResult4.innerText = numPop4;
             numResult5.innerText = numPop5;
         }else if(amount === 4){
-            numPop = winner.pop([0]);
-            numPop2 = winner.pop([1]);
-            numPop3 = winner.pop([2]);
-            numPop4 = winner.pop([3]);
+            numPop = winner.shift();
+            numPop2 = winner.shift();
+            numPop3 = winner.shift();
+            numPop4 = winner.shift();
             numResult.innerText = numPop;
             numResult2.innerText = numPop2;
             numResult3.innerText = numPop3;
             numResult4.innerText = numPop4;
         }else if(amount === 3){
-            numPop = winner.pop([0]);
-            numPop2 = winner.pop([1]);
-            numPop3 = winner.pop([2]);
+            numPop = winner.shift();
+            numPop2 = winner.shift();
+            numPop3 = winner.shift();
             numResult.innerText = numPop;
             numResult2.innerText = numPop2;
             numResult3.innerText = numPop3;
         }else if(amount === 2){
-            numPop = winner.pop([0]);
-            numPop2 = winner.pop([1]);
+            numPop = winner.shift();
+            numPop2 = winner.shift();
             numResult.innerText = numPop;
             numResult2.innerText = numPop2;
         }else{
-            numPop = winner.pop([0]);
+            numPop = winner.shift();
             numResult.innerText = numPop;
         }
           
